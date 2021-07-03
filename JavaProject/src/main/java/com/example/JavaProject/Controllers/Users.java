@@ -27,19 +27,14 @@ public class Users {
 		this.userService = userService;
 		this.userValidator = userValidator;
 	}
-
-//	
-//	@RequestMapping("/registration")
-//    public String registerForm(@Valid @ModelAttribute("user") User user) {
-//        return "registrationPage.jsp";
-//    }
+	
 
 	@PostMapping("/registration")
 	public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
 
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
-			return "registrationPage.jsp";
+			return "home.jsp";
 		}
 //		userService.saveUserWithAdminRole(user);
 		userService.saveWithUserRole(user);
@@ -71,6 +66,6 @@ public class Users {
 		// 1
 		String username = principal.getName();
 		model.addAttribute("currentUser", userService.findByUsername(username));
-		return "mainPage.jsp";
+		return "home.jsp";
 	}
 }
