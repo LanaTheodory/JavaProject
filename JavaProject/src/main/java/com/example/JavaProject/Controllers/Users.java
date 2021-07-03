@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.JavaProject.Models.Role;
 import com.example.JavaProject.Models.User;
+import com.example.JavaProject.Services.Allservices;
 import com.example.JavaProject.Services.UserService;
 import com.example.JavaProject.Validator.UserValidator;
 
@@ -22,10 +23,12 @@ public class Users {
 
 	private UserService userService;
 	private UserValidator userValidator;
+	private Allservices allservices;
 
-	public Users(UserService userService, UserValidator userValidator) {
+	public Users(UserService userService, UserValidator userValidator, Allservices allservices) {
 		this.userService = userService;
 		this.userValidator = userValidator;
+		this.allservices = allservices;
 	}
 	
 
@@ -66,6 +69,7 @@ public class Users {
 		// 1
 		String username = principal.getName();
 		model.addAttribute("currentUser", userService.findByUsername(username));
+		model.addAttribute("locations", allservices.allstation());
 		return "home.jsp";
 	}
 }

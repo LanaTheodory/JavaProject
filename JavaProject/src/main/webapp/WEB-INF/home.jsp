@@ -42,10 +42,14 @@
 	<main>
 		<section class="glass">
 			<div class="dashboard">
-			<div class="link">
-						<h2>ِHome</h2>
+				<div class="links">
+					<div class="link">
+						<h2>
+							ِ<a href="/">Home</a>
+						</h2>
 					</div>
-					
+				</div>
+
 				<div class="user">
 					<img src="./images/avatar.png" alt="" />
 					<h3>Simo Edwin</h3>
@@ -53,30 +57,40 @@
 				</div>
 				<div class="links">
 					<div class="link">
-						<h2>ِAccount</h2>
+						<h2>
+							<a href="/account">Account</a>
+						</h2>
 					</div>
 					<div class="link">
-						<h2>Stations</h2>
+						<h2>
+							<a href="/stations">Stations</a>
+						</h2>
 					</div>
 					<div class="link">
-						<h2>Prices</h2>
+						<h2>
+							<a href="/prices">Prices</a>
+						</h2>
 					</div>
 					<div class="link">
-						<h2>About us.</h2>
+						<h2>
+							<a href="/about">About us</a>
+						</h2>
 					</div>
 				</div>
 
 			</div>
 			<div class="games">
-				<div id="map"></div>
+				<h1>BADALLAH</h1>
+				<h3>Find All Our Stations!</h3>
+					<div id="map" class="card"></div>
+
 			</div>
 		</section>
 	</main>
 	<div class="circle1"></div>
 	<div class="circle2"></div>
-	 <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly"
+		async></script>
 </body>
 </html>

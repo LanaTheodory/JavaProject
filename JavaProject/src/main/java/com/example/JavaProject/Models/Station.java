@@ -24,6 +24,7 @@ public class Station {
 	private String name;
 	@Size(min = 3, message = "Location must be greater than 3 characters")
 	private String location;
+	private double lat, lng;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -57,7 +58,19 @@ public class Station {
 	protected void onCreate() {
 		this.createdAt = new Date();
 	}
-
+	
+	public double getLat() {
+		return lat;
+	}
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+	public double getLng() {
+		return lng;
+	}
+	public void setLng(double lng) {
+		this.lng = lng;
+	}
 	@PreUpdate
 	protected void onUpdate() {
 		this.updatedAt = new Date();
