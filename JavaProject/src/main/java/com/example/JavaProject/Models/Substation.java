@@ -28,7 +28,7 @@ public class Substation {
     private Bicycle bicycle;
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="station_id")
-    private Station station;
+    private Station stations;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -48,10 +48,10 @@ public class Substation {
 		this.bicycle = bicycle;
 	}
 	public Station getStation() {
-		return station;
+		return stations;
 	}
 	public void setStation(Station station) {
-		this.station = station;
+		this.stations = station;
 	}
 	public Long getId() {
 		return id;

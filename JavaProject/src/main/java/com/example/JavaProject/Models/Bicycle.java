@@ -24,10 +24,10 @@ public class Bicycle {
 	private String type;
 	@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
-    private User user;
+    private User users;
 	@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="substation_id")
-    private Substation substation;
+    private Substation substations;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -40,16 +40,16 @@ public class Bicycle {
 		this.type = type;
 	}
 	public User getUser() {
-		return user;
+		return users;
 	}
 	public void setUser(User user) {
-		this.user = user;
+		this.users = user;
 	}
 	public Substation getSubstation() {
-		return substation;
+		return substations;
 	}
 	public void setSubstation(Substation substation) {
-		this.substation = substation;
+		this.substations = substation;
 	}
 	public Long getId() {
 		return id;

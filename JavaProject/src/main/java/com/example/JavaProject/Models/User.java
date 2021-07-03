@@ -35,17 +35,11 @@ public class User {
 	private String lastname;
 	@Size(min = 3, message = "Username must be greater than 3 characters")
 	private String username;
-	@NotBlank
-	@Email(message = "Email must be valid")
 	private String email;
 	@Size(min = 5, message = "Password must be greater than 5 characters")
 	private String password;
 	@Transient
 	private String passwordConfirmation;
-	public final String[] gender = {
-			"Male", "Female"
-		};
-	@Range(min=12, message="You must be older than 12.")
 	private int age;
 	private int total;
 	private int current;
@@ -145,10 +139,6 @@ public class User {
 
 	public void setCurrent(int current) {
 		this.current = current;
-	}
-
-	public String[] getGender() {
-		return gender;
 	}
 	
 
