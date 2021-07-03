@@ -98,7 +98,7 @@ $(document).ready(function () {
 
 
     // Form submit
-    $('form.signup-form').submit(function (event) {
+  /*  $('form.signup-form').submit(function (event) {
         event.preventDefault();
 
         if (usernameError == true || emailError == true || passwordError == true || passConfirm == true) {
@@ -114,7 +114,7 @@ $(document).ready(function () {
             setTimeout(function () { $('.form').hide(); }, 700);
         }
     });
-
+ */
     // Reload page
     $('a.profile').on('click', function () {
         location.reload(true);

@@ -43,7 +43,7 @@ public class Users {
 		}
 //		userService.saveUserWithAdminRole(user);
 		userService.saveWithUserRole(user);
-		return "redirect:/login";
+		return "redirect:/home";
 	}
 
 	@RequestMapping("/admin")
@@ -71,6 +71,6 @@ public class Users {
 		// 1
 		String username = principal.getName();
 		model.addAttribute("currentUser", userService.findByUsername(username));
-		return "homePage.jsp";
+		return "mainPage.jsp";
 	}
 }

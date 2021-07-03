@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="success-msg">
-					<p>Great! You are one of our members now</p>
+					<p>Great! You are one of our team now</p>
 					<a href="#" class="profile">Your Profile</a>
 				</div>
 			</div>
@@ -99,13 +99,13 @@
 
 						<div class="form-group">
 							<form:label path="username">User name:</form:label>
-							<form:input path="username" />
+							<form:input id="name" class="name" path="username" />
 							<span class="error"></span>
 						</div>
 
 						<div class="form-group">
 							<form:label path="email">Email</form:label>
-							<form:input path="email" type="email" />
+							<form:input  id="email" class="email" path="email" type="email" />
 							<span class="error"></span>
 						</div>
 
@@ -116,12 +116,12 @@
 						</div>
 						<div class="form-group">
 							<form:label path="password">Password:</form:label>
-							<form:password path="password" />
+							<form:password id="password" class="pass" path="password" />
 							<span class="error"></span>
 						</div>
 						<div class="form-group">
 							<form:label path="passwordConfirmation">Password Confirmation:</form:label>
-							<form:password path="passwordConfirmation" />
+							<form:password id="passwordCon" class="passConfirm" path="passwordConfirmation" />
 							<span class="error"></span>
 						</div>
 
