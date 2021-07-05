@@ -27,7 +27,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="css/loginReg.css">
+<link rel="stylesheet" type="text/css" href="css/stations.css">
 <script type="text/javascript" src="js/loginReg.js"></script>
 <title>Home Page</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -35,59 +35,57 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
 	rel="stylesheet" />
 <link rel="stylesheet" href="./css/style.css" />
-<link rel="stylesheet" href="./css/home.css" />
-<script type="text/javascript" src="./js/home.js"></script>
+<link rel="stylesheet" href="./css/stations.css" />
+<script type="text/javascript" src="./js/stations.js"></script>
 </head>
 <body>
 	<main>
+	<img src="/images/logo.png" alt="" />
 		<section class="glass">
+		
 			<div class="dashboard">
-				<div class="links">
-					<div class="link">
-						<h2>
-							<a href="/">Home</a>
-						</h2>
-					</div>
+			
+				<div class="link">
+					<h2>ِHome</h2>
 				</div>
 
 				<div class="user">
-					<img src="./images/avatar.png" alt="" />
-					<h3>${currentUser.username}</h3>
+					
+					<h3>Simo Edwin</h3>
 					<p>Pro Member</p>
 				</div>
 				<div class="links">
 					<div class="link">
-						<h2>
-							<a href="/account">Account</a>
-						</h2>
+						<h2>ِAccount</h2>
 					</div>
 					<div class="link">
-						<h2>
-							<a href="/stations">Stations</a>
-						</h2>
+						<h2>Stations</h2>
 					</div>
 					<div class="link">
-						<h2>
-							<a href="/prices">Prices</a>
-						</h2>
+						<h2>Prices</h2>
 					</div>
 					<div class="link">
-						<h2>
-							<a href="/about">About us</a>
-						</h2>
+						<h2>About us.</h2>
 					</div>
 				</div>
 
 			</div>
-			<div class="games">
-				<h1>BADALLAH</h1>
-				<h3>Find All Our Stations!</h3>
-				<div id="map" class="card"></div>
-<form id="logoutForm" method="POST" action="/logout">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" value="Logout!" />
-    </form>
+
+
+			<div class="cards">
+				<c:forEach var="station" items="${stations}">
+					<div class="card1">
+						<h3>${station.name}</h3>
+						<p>${station.location}</p>
+						
+					</div>
+				</c:forEach>
 			</div>
+
+
+
+
+
 		</section>
 	</main>
 	<div class="circle1"></div>

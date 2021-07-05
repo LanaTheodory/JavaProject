@@ -1,9 +1,13 @@
 package com.example.JavaProject.Services;
 
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.JavaProject.Models.Station;
 import com.example.JavaProject.Models.User;
 import com.example.JavaProject.Repositories.RoleRepository;
 import com.example.JavaProject.Repositories.UserRepository;
@@ -40,4 +44,23 @@ public class UserService {
 	    public User findByUsername(String username) {
 	        return userRepository.findByUsername(username);
 	    }
+	    public User findByid(Long id) {
+	    	Optional<User> s = userRepository.findById(id);
+	    	if(s!=null) return s.get();
+	    	else return null;
+	    }
+
+
+		public void delete(User username) {
+			// TODO Auto-generated method stub
+			userRepository.delete(username);
+		}
+
+
+		public User findByEmail(String username) {
+	        return userRepository.findByEmail(username);
+	    }
+
+
+		
 }

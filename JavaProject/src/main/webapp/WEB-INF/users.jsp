@@ -13,17 +13,42 @@
 <body>
 
 	<div class="sidebar">
-  <a class="active" href="/admin">Home</a>
-  <a href="/admin/users">All Users</a>
-  <a href="/admin/bicycles">All Bicycles</a>
-  <a href="/admin/stations">All Stations</a>
+  <a class="active" href="#home">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
    <form id="logoutForm" method="POST" action="/logout">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Logout!" class="btn btn-danger" />
     </form>
 </div>
 <div class="content">
-
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Email</td>
+    <td>Total minutes biking</td>
+    <td>Age</td>
+    <td>UserName</td>
+    <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <c:forEach items="${ users }" var="e">
+			<tr>
+				<td>${e.firstname}</td>
+				<td>${e.lastname}</td>
+				<td>${e.email}</td>
+				<td>${e.total}</td>
+				<td>${e.age}</td>
+				<td>${e.username}</td>
+				<td><a href="/admin/user/edit/${e.id}"><button class="btn btn-warning">edit</button></a>  <a href="/admin/user/delete/${e.id}"><button class="btn btn-danger">delete</button></a> </td>
+			</tr>
+		</c:forEach>
+  </tbody>
+</table>
 </div>
 
 

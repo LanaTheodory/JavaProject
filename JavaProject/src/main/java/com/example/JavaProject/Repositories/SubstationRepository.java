@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.JavaProject.Models.Station;
-
-
+import com.example.JavaProject.Models.Substation;
 @Repository
-public interface StationRepository extends CrudRepository<Station, Long>  {
-	List<Station> findAll();
+public interface SubstationRepository extends CrudRepository<Substation, Long> {
+	
+	List<Substation> findAll();
+
 }

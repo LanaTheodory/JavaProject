@@ -27,7 +27,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="css/loginReg.css">
+<link rel="stylesheet" type="text/css" href="css/aboutus.css">
 <script type="text/javascript" src="js/loginReg.js"></script>
 <title>Home Page</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -35,65 +35,75 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
 	rel="stylesheet" />
 <link rel="stylesheet" href="./css/style.css" />
-<link rel="stylesheet" href="./css/home.css" />
-<script type="text/javascript" src="./js/home.js"></script>
+<link rel="stylesheet" href="./css/aboutus.css" />
+<script type="text/javascript" src="./js/aboutus.js"></script>
 </head>
 <body>
 	<main>
+	<img src="/images/logo.png" alt="" />
 		<section class="glass">
 			<div class="dashboard">
-				<div class="links">
-					<div class="link">
-						<h2>
-							<a href="/">Home</a>
-						</h2>
-					</div>
+				<div class="link">
+					<h2>ِHome</h2>
 				</div>
 
 				<div class="user">
-					<img src="./images/avatar.png" alt="" />
-					<h3>${currentUser.username}</h3>
+					
+					<h3>Simo Edwin</h3>
 					<p>Pro Member</p>
 				</div>
 				<div class="links">
 					<div class="link">
-						<h2>
-							<a href="/account">Account</a>
-						</h2>
+						<h2>ِAccount</h2>
 					</div>
 					<div class="link">
-						<h2>
-							<a href="/stations">Stations</a>
-						</h2>
+						<h2>Stations</h2>
 					</div>
 					<div class="link">
-						<h2>
-							<a href="/prices">Prices</a>
-						</h2>
+						<h2>Prices</h2>
 					</div>
 					<div class="link">
-						<h2>
-							<a href="/about">About us</a>
-						</h2>
+						<h2>About us.</h2>
 					</div>
 				</div>
 
 			</div>
-			<div class="games">
-				<h1>BADALLAH</h1>
-				<h3>Find All Our Stations!</h3>
-				<div id="map" class="card"></div>
-<form id="logoutForm" method="POST" action="/logout">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" value="Logout!" />
-    </form>
+
+
+			<div class="cards1" >
+			
+				<h1>About us</h1><Br>
+				<h3>Our vision</h3>
+				<p>Our vision is to create a better everyday life for many people.<br> 
+				We aim to make an impact on people's daily life by reducing traffic, promoting <br>fitness and 
+				saving people time while making the daily commute fun and healthy. 
+				
+				</p>
+				<h3>Our future plan</h3>
+				<p>we are looking forward to distribute our stations in all the Palestinian cities
+				to be able to cycle all across Palestine
+				 
+				</p>
+				<h3>Our team</h3>
+				<p>Ahmad Jury</p>
+				<p>Dyar Barham</p>
+				<p>Lana Theodory</p>
+				<p>Mousa Jaafreh</p>
+				
+				
+				
+
 			</div>
+
+
+
+
+
 		</section>
 	</main>
 	<div class="circle1"></div>
 	<div class="circle2"></div>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly"
-		async></script>
+	<script>
+		</script>
 </body>
 </html>

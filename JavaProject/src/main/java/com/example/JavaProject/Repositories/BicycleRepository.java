@@ -5,10 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.JavaProject.Models.Station;
-
+import com.example.JavaProject.Models.Bicycle;
 
 @Repository
-public interface StationRepository extends CrudRepository<Station, Long>  {
-	List<Station> findAll();
+public interface BicycleRepository extends CrudRepository<Bicycle, Long>  {
+	List<Bicycle> findAll();
 }

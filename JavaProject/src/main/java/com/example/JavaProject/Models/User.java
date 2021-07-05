@@ -17,11 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "users")
@@ -159,4 +155,15 @@ public class User {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
+	public int getthelastupdate() {
+		// TODO Auto-generated method stub
+		return this.getthelastupdate();
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	
+
 }

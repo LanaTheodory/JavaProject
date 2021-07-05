@@ -23,6 +23,8 @@ h3 {
   opacity: 0.8;
   align-self: center;
 }
+
+
 main {
   font-family: "Poppins", sans-serif;
   min-height: 100vh;
@@ -30,8 +32,28 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+    background-image: url("/images/aboutus10.jpg");
+  background-size: 100% 100%;
+}	
+.cards1 img{
+	 
+  position: absolute;
+    top:25%;
+    left:25%;
+   max-width: 2%;
+  height: auto;
 
+}
+main img{
+	 
+  position: absolute;
+  top: 8px;
+  left: 16px;
+   max-width: 8%;
+  height: auto;
+  margin-left: 5rem;
+  margin-top:5rem;
+}
 .glass {
   background: white;
   min-height: 80vh;
@@ -152,7 +174,12 @@ main {
   box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
   justify-content: space-between;
 }
+.cards1 {
+  padding: 2rem;
+  justify-content: space-between;
 
+  
+}
 .progress {
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
   width: 100%;
@@ -180,14 +207,4 @@ main {
   background: linear-gradient(to right top, #65dfc9, #6cdbeb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.button{
-    font-weight: bold;
-    background: linear-gradient(to right top, #658ec6, #445f82);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: rgb(122 122 122 / 21%);
-    border: 1px solid rgb(255 255 255 / 30%);
-    border-radious: 10px;
-    padding: 5px;
 }
