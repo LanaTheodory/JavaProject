@@ -14,7 +14,7 @@
 
 ## Our mission and vision:
 **Baddaleh** is a platform that provide an easy way to rent bycicles.
-by having an account in baddaleh, you can use any bycicle to handle your day in afast,healthy and economic way. 
+by having an account in baddaleh, you can use any bycicle to handle your day in a fast,healthy and economicly friendly way. 
 
 
 ## Technologies Used
@@ -24,6 +24,7 @@ by having an account in baddaleh, you can use any bycicle to handle your day in 
 - Java Servlet Pages (JSP).
 - bootstrap - version 3.0/ 4.0
 - jQuery
+- google mapd API
 
 
 ## Features:
@@ -62,5 +63,4 @@ To do:
 ## Contact
 emails: 
 lanatheodory@gmail.com
-message.txt
-3 KB
+
