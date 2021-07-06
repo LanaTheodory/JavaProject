@@ -24,7 +24,7 @@ by having an account in baddaleh, you can use any bycicle to handle your day in 
 - Java Servlet Pages (JSP).
 - bootstrap - version 3.0/ 4.0
 - jQuery
-- google mapd API
+- google maps API
 
 
 ## Features:
