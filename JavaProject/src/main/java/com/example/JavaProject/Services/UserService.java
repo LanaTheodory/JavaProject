@@ -62,5 +62,18 @@ public class UserService {
 	    }
 
 
+		public void edituser(User b, User editUser) {
+			// TODO Auto-generated method stub
+			b.setAge(editUser.getAge());
+			b.setEmail(editUser.getEmail());
+			b.setFirstname(editUser.getFirstname());
+			b.setLastname(editUser.getLastname());
+			b.setPassword(editUser.getPassword());
+			b.setRoles(editUser.getRoles());
+			b.setUsername(editUser.getUsername());
+			userRepository.save(b);
+		}
+
+
 		
 }

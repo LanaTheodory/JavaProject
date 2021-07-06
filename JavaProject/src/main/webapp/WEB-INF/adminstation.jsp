@@ -23,6 +23,7 @@
     </form>
 </div>
 <div class="content">
+<a href="/admin/stations/new/${e.id}"><button class="btn btn-success">Add New</button></a>
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -39,7 +40,7 @@
 				<td>${e.location}</td>
 				<td>${e.lat},${e.lng}</td>
 				
-				<td><a href="/admin/user/edit/${e.id}"><button class="btn btn-warning">edit</button></a>  <a href="/admin/station/delete/${e.id}"><button class="btn btn-danger">delete</button></a> </td>
+				<td><a href="/admin/stations/edit/${e.id}"><button class="btn btn-warning">edit</button></a>  <a href="/admin/station/delete/${e.id}"><button class="btn btn-danger">delete</button></a> <a href="/admin/substations/${e.id}"><button class="btn btn-info">SubStations</button></a></td>
 			</tr>
 		</c:forEach>
   </tbody>

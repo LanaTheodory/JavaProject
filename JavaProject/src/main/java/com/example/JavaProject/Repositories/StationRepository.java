@@ -11,4 +11,6 @@ import com.example.JavaProject.Models.Station;
 @Repository
 public interface StationRepository extends CrudRepository<Station, Long>  {
 	List<Station> findAll();
+	List<Station> findAllBySubstationsBicycleNotNull();
+	List<Station> findAllBySubstationsBicycleNull();
 }

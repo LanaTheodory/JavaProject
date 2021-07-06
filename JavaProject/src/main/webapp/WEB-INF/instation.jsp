@@ -87,8 +87,8 @@
 												method="POST" modelAttribute="bike">
 
 												<form:hidden path="id" value="${substation.bicycle.id}" />
-												<form:hidden path="users" value="${user.id}" />
-												<form:hidden path="substations" value="${substation.id}" />
+												<form:hidden path="user" value="${user.id}" />
+												<form:hidden path="substation" value="${substation.id}" />
 												<button class="button">rent</button>
 											</form:form>
 										</div>

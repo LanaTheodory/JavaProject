@@ -74,14 +74,21 @@ public class Users {
 	public String bic(Principal principal, Model model, @PathVariable("id") Long id) {
 		Bicycle username = allservices.findBicycleid(id);
 		allservices.delete(username);
-		return "redirect:/admin/users";
+		return "redirect:/admin/bicycles";
 	}
 
 	@RequestMapping("/admin/station/delete/{id}")
 	public String sta(Principal principal, Model model, @PathVariable("id") Long id) {
 		Station username = allservices.findstationid(id);
 		allservices.deletestation(username);
-		return "redirect:/admin/users";
+		return "redirect:/admin/stations";
+	}
+
+	@RequestMapping("/admin/substation/delete/{ids}/{id}")
+	public String sub(Principal principal, Model model, @PathVariable("id") Long id, @PathVariable("ids") Long ids) {
+		Substation username = allservices.findSubstationById(id);
+		allservices.deletesubstation(username);
+		return "redirect:/admin/substations/" + ids;
 	}
 
 	@RequestMapping("/admin/bicycles")
@@ -100,6 +107,16 @@ public class Users {
 		return "adminstation.jsp";
 	}
 
+	@RequestMapping("/admin/substations/{id}")
+	public String adminPagestations(Principal principal, Model model, @PathVariable("id") Long id) {
+		String username = principal.getName();
+		model.addAttribute("currentUser", userService.findByUsername(username));
+		model.addAttribute("station", allservices.findStationById(id));
+
+		model.addAttribute("substations", allservices.findStationById(id).getSubstations());
+		return "adminsubstations.jsp";
+	}
+
 	@RequestMapping("/login")
 	public String login(@ModelAttribute("user") User user,
 			@RequestParam(value = "error", required = false) String error,
@@ -116,9 +133,12 @@ public class Users {
 	@RequestMapping(value = { "/", "/home" })
 	public String home(Principal principal, Model model) {
 		// 1
-		String username = principal.getName();
-		System.out.println(username);
-		model.addAttribute("currentUser", userService.findByUsername(username));
+		/*
+		 * String username = principal.getName(); System.out.println(username);
+		 * model.addAttribute("currentUser", userService.findByUsername(username));
+		 */
+		model.addAttribute("stations", allservices.allnotnull());
+		model.addAttribute("station", allservices.allnull());
 		model.addAttribute("locations", allservices.allstation());
 		return "home.jsp";
 	}
@@ -138,33 +158,38 @@ public class Users {
 	@RequestMapping("/instation/{id}")
 	public String instation(@PathVariable("id") Long id, Principal principal, Model model,
 			@ModelAttribute("bike") Bicycle bike, @ModelAttribute("bike1") Bicycle bike1) {
-
-		String username = principal.getName();
-		model.addAttribute("user", userService.findByEmail(username));
-		System.out.println(username);
+//
+//		String username = principal.getName();
+//		model.addAttribute("user", userService.findByEmail(username));
+//		System.out.println(username);
 		model.addAttribute("station", allservices.findStationById(id));
 
 		return "instation.jsp";
 	}
 
-	@RequestMapping("rent/instation/{id}")
-	public String rentBike(@PathVariable("id") Long id, Principal principal, Model model,@ModelAttribute("bike") Bicycle bike) {
-		
-		String username = principal.getName();
-		User user1 = userService.findByEmail(username);
+	@RequestMapping("/rent/instation/{id}")
+	public String rentBike(@PathVariable("id") Long id, Principal principal, Model model,
+			@ModelAttribute("bike") Bicycle bike) {
 
-		bike.setUser(user1);
-		System.out.println(user1);
-		
-		bike.setSubstation(null);
-		allservices.updateBicycle(bike);
-		
-		return"redirect:/instation/"+ id;
+		if (principal != null) {
+			String username = principal.getName();
+			User user1 = userService.findByEmail(username);
+
+			bike.setUser(user1);
+
+			bike.setSubstation(null);
+			allservices.updateBicycle(bike);
+			return "redirect:/instation/" + id;
+		} else
+
+			return "redirect:/login";
 
 	}
+
 	@RequestMapping("return/instation/{id}")
-	public String returnBike(@PathVariable("id") Long id, Principal principal, Model model,@ModelAttribute("bike1") Bicycle bike) {
-		
+	public String returnBike(@PathVariable("id") Long id, Principal principal, Model model,
+			@ModelAttribute("bike1") Bicycle bike) {
+
 		String username = principal.getName();
 		User user1 = userService.findByEmail(username);
 		Substation sub = allservices.findSubstationById(bike.getSubstation().getId());
@@ -172,17 +197,148 @@ public class Users {
 
 		bike.setUser(null);
 		bike.setSubstation(sub);
-		
-		
+
 		allservices.updateBicycle(bike);
 
-		return"redirect:/instation/"+ id;
+		return "redirect:/instation/" + id;
 
 	}
+
 	/*
 	 * @GetMapping("/asd/{id}") public String mohazkel(Model model, @PathVariable
 	 * Long id) { User hezkel = userService.findByid(id); model =
 	 * model.addAttribute("hezkel", hezkel); model = model.addAttribute("osod",
 	 * userService.timerat(hezkel)); return "counter.jsp"; }
 	 */
+	@GetMapping("/admin/bicycles/edit/{id}")
+	public String adminPageeditbicycles(Principal principal, Model model,
+			@ModelAttribute("editBicycle") Bicycle editBicycle, BindingResult result, @PathVariable("id") Long id) {
+		Bicycle b = allservices.findBicycleid(id);
+		model.addAttribute("bicycle", b);
+		return "admineditbicycle.jsp";
+	}
+
+	@PostMapping("/admin/bicycles/edit/{id}")
+	public String adminPageeditbicycles(Principal principal, @ModelAttribute("editBicycle") Bicycle editBicycle,
+			BindingResult result, @PathVariable("id") Long id) {
+		if (result.hasErrors())
+			return "admineditbicycle.jsp";
+		Bicycle b = allservices.findBicycleid(id);
+		allservices.editbicycle(b, editBicycle);
+		return "redirect:/admin/bicycles";
+	}
+
+	@GetMapping("/admin/stations/edit/{id}")
+	public String adminPageeditstations(Principal principal, Model model,
+			@ModelAttribute("editStation") Station editStation, BindingResult result, @PathVariable("id") Long id) {
+		Station b = allservices.findStationById(id);
+		model.addAttribute("station", b);
+		return "admineditstation.jsp";
+	}
+
+	@PostMapping("/admin/stations/edit/{id}")
+	public String adminPageeditsatations(Principal principal, @ModelAttribute("editStation") Station editStation,
+			BindingResult result, @PathVariable("id") Long id) {
+		if (result.hasErrors())
+			return "admineditstation.jsp";
+		Station b = allservices.findStationById(id);
+		allservices.editstation(b, editStation);
+		return "redirect:/admin/stations";
+	}
+
+	@GetMapping("/admin/user/edit/{id}")
+	public String adminPageedituser(Principal principal, Model model, @ModelAttribute("editUser") User editUser,
+			BindingResult result, @PathVariable("id") Long id) {
+		User b = userService.findByid(id);
+		model.addAttribute("user", b);
+		model.addAttribute("roll", allservices.allroles());
+		return "adminedituser.jsp";
+	}
+
+	@PostMapping("/admin/user/edit/{id}")
+	public String adminPageedituser(Principal principal, @ModelAttribute("editUser") User editUser,
+			BindingResult result, @PathVariable("id") Long id) {
+		if (result.hasErrors())
+			return "adminedituser.jsp";
+		User b = userService.findByid(id);
+		userService.edituser(b, editUser);
+		return "redirect:/admin/users";
+	}
+
+	@GetMapping("/admin/substation/edit/{id}")
+	public String adminPageeditsubstations(Principal principal, Model model,
+			@ModelAttribute("editSubStation") Substation editSubStation, BindingResult result,
+			@PathVariable("id") Long id) {
+		Substation b = allservices.findSubstationById(id);
+		model.addAttribute("roll", allservices.allstation());
+		model.addAttribute("substation", b);
+		return "admineditsubstation.jsp";
+	}
+
+	@PostMapping("/admin/substation/edit/{id}")
+	public String adminPageeditsubstations(Principal principal,
+			@ModelAttribute("editSubStation") Substation editSubStation, BindingResult result,
+			@PathVariable("id") Long id) {
+		if (result.hasErrors())
+			return "admineditsubstation.jsp";
+		Substation b = allservices.findSubstationById(id);
+		Long a = b.getStation().getId();
+		allservices.editsubstation(b, editSubStation);
+		return "redirect:/admin/substations/" + a;
+	}
+
+	@GetMapping("/admin/bicycles/new")
+	public String adminPagenewbicycles(Principal principal, Model model,
+			@ModelAttribute("newBicycle") Bicycle newBicycle, BindingResult result) {
+		String username = principal.getName();
+		model.addAttribute("currentUser", userService.findByUsername(username));
+		model.addAttribute("sub", allservices.allsubstationsnotempty());
+		return "adminnewbicycle.jsp";
+	}
+
+	@PostMapping("/admin/bicycles/new")
+	public String adminPagenewbicycles(Principal principal, @ModelAttribute("newBicycle") Bicycle newBicycle,
+			BindingResult result) {
+		if (result.hasErrors())
+			return "adminnewbicycle.jsp";
+		allservices.createbicycle(newBicycle);
+		return "redirect:/admin/bicycles";
+	}
+
+	@GetMapping("/admin/stations/new")
+	public String adminPagenewstations(Principal principal, Model model,
+			@ModelAttribute("newStation") Station newStation, BindingResult result) {
+		String username = principal.getName();
+		model.addAttribute("currentUser", userService.findByUsername(username));
+		return "adminnewstation.jsp";
+	}
+
+	@PostMapping("/admin/stations/new")
+	public String adminPageeditsatations(Principal principal, @ModelAttribute("newStation") Station newStation,
+			BindingResult result) {
+		if (result.hasErrors())
+			return "adminnewstation.jsp";
+		allservices.createstation(newStation);
+		return "redirect:/admin/stations";
+	}
+
+	@GetMapping("/admin/substation/new/{id}")
+	public String adminPagenewsubstations(Principal principal, Model model,
+			@ModelAttribute("newSubStation") Substation newSubStation, BindingResult result,
+			@PathVariable("id") Long id) {
+		String username = principal.getName();
+		model.addAttribute("station", allservices.findStationById(id));
+		model.addAttribute("currentUser", userService.findByUsername(username));
+		return "adminnewsubstation.jsp";
+	}
+
+	@PostMapping("/admin/substation/new/{id}")
+	public String adminPagenewsubstations(Principal principal,
+			@ModelAttribute("newSubStation") Substation newSubStation, BindingResult result,
+			@PathVariable("id") Long id) {
+		if (result.hasErrors())
+			return "adminnewsubstation.jsp";
+		allservices.newsubstation(newSubStation);
+		return "redirect:/admin/substations/"+id;
+	}
 }
