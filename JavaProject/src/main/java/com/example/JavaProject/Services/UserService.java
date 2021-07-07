@@ -60,7 +60,28 @@ public class UserService {
 		public User findByEmail(String username) {
 	        return userRepository.findByEmail(username);
 	    }
-
-
+		 public User updateUser(User user) {
+			 return userRepository.save(user);
+		 }
+		 
+//		 public int timerat(User user) {
+//
+//	            String asd = user.getUpdatedAt().toString();
+//	            String[] hezkel = asd.split(":");
+//	            String nano = hezkel[0];
+//	            System.out.println(nano);
+//	            int val = Integer.parseInt(nano);
+//
+//
+//
+//	            int asds = user.getthelastupdate(nano);
+//
+//	            int osod = val - asds;
+//	            return osod;
+//
+//	            } 
+//		 
+		 
+	
 		
 }

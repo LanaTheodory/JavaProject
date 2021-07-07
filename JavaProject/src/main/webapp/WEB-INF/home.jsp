@@ -34,60 +34,91 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
 	rel="stylesheet" />
-<link rel="stylesheet" href="./css/style.css" />
-<link rel="stylesheet" href="./css/home.css" />
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="/css/home.css" />
 <script type="text/javascript" src="./js/home.js"></script>
 </head>
 <body>
 	<main>
+	<div>
+	<img src="/images/logo.png" alt="" /> 
+	</div>
 		<section class="glass">
+		
 			<div class="dashboard">
-				<div class="links">
-					<div class="link">
-						<h2>
-							<a href="/">Home</a>
-						</h2>
-					</div>
+			
+				<div class="link">
+					<h2>ِ
+					<a href="/">Home</a>
+					</h2>
 				</div>
 
 				<div class="user">
-					<img src="./images/avatar.png" alt="" />
-					<h3>${currentUser.username}</h3>
-					<p>Pro Member</p>
+					
+					<h3>${currentUser.firstname} ${currentUser.lastname}</h3>
+					
 				</div>
 				<div class="links">
 					<div class="link">
 						<h2>
-							<a href="/account">Account</a>
+							<a href="/account/${currentUser.id }">Account</a>
 						</h2>
 					</div>
-					<div class="link">
+				<div class="link">
 						<h2>
 							<a href="/stations">Stations</a>
 						</h2>
 					</div>
+				
 					<div class="link">
 						<h2>
-							<a href="/prices">Prices</a>
+							<a href="/">Prices</a>
 						</h2>
 					</div>
 					<div class="link">
 						<h2>
-							<a href="/about">About us</a>
+							<a href="/aboutus">About us</a>
 						</h2>
+					</div>
+				</div>
+				
+				<div class="link">
+						<h3>
+							<form  id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input class="card button" type="submit" value="Logout!" />
+    </form>
+						</h3>
 					</div>
 				</div>
 
 			</div>
+
+		
 			<div class="games">
-				<h1>BADALLAH</h1>
+				<h1>Baddaleh</h1>
 				<h3>Find All Our Stations!</h3>
 				<div id="map" class="card"></div>
-<form id="logoutForm" method="POST" action="/logout">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" value="Logout!" />
-    </form>
-			</div>
+
+			<div class ="prices1">
+
+
+            <div class="pricetab card1">
+            <h3>Price Per Minute</h3>
+            <h4 class="percentage oneline">0.20 nis/min</h4>
+            </div>
+
+            <div class="pricetab card1">
+            <h3>Price Per Day</h3>
+            <h4 class="percentage oneline">70 nis/day</h4></div>
+
+        <div class="pricetab card1">
+            <h3>Bonus Minutes</h3>
+            <h4 class="percentage">one bonus minute every 10 minutes</h4>
+            </div>
+            </div>
+            </div>
+            
 		</section>
 	</main>
 	<div class="circle1"></div>
