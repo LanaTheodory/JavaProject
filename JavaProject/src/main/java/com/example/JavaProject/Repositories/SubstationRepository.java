@@ -11,4 +11,6 @@ public interface SubstationRepository extends CrudRepository<Substation, Long> {
 	
 	List<Substation> findAll();
 
+	List<Substation> findAllByBicycleNull();
+
 }

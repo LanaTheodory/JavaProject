@@ -23,6 +23,8 @@
     </form>
 </div>
 <div class="content">
+<a href="/admin/bicycles/new"><button
+				class="btn btn-success">Add New</button></a>
 <table class="table">
   <thead class="table-dark">
     <tr>
@@ -36,10 +38,10 @@
     <c:forEach items="${ users }" var="e">
 			<tr>
 				<td>${e.type}</td>
-				<td>${e.substations}</td>
-				<td>${e.users}</td>
+				<td>${e.substation.name}</td>
+				<td>${e.user}</td>
 
-				<td><a href="/admin/user/edit/${e.id}"><button class="btn btn-warning">edit</button></a>  <a href="/admin/bicycle/delete/${e.id}"><button class="btn btn-danger">delete</button></a> </td>
+				<td><a href="/admin/bicycles/edit/${e.id}"><button class="btn btn-warning">edit</button></a>  <a href="/admin/bicycle/delete/${e.id}"><button class="btn btn-danger">delete</button></a> </td>
 			</tr>
 		</c:forEach>
   </tbody>

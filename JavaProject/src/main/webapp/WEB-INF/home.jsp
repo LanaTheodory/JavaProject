@@ -38,6 +38,55 @@
 <link rel="stylesheet" href="/css/home.css" />
 <script type="text/javascript" src="./js/home.js"></script>
 </head>
+<script type="text/javascript">
+function initMap() {
+	  const myLatLng = { lat: 31.964956, lng: 35.186712 };
+	  const map = new google.maps.Map(document.getElementById("map"), {
+	    zoom: 13,
+	    center: myLatLng,
+	  });
+	  
+	  <c:forEach items="${ stations }" var="s">
+	  const conttt${s.id} = "<a href='/instation/${s.id}'>${s.name}</a>";
+		const infowindo${s.id} = new google.maps.InfoWindow({
+		    content: conttt${s.id},
+		  });
+		const marke${s.id} =  new google.maps.Marker({
+		  	
+		    position: { lat: ${s.lat}, lng: ${s.lng} },
+		    map,
+		    title: "Hello World!",
+		  });
+		marke${s.id}.addListener("click", () => {
+			infowindo${s.id}.open({
+		      anchor: marke${s.id},
+		      map,
+		      shouldFocus: false,
+		    });
+		  });
+	</c:forEach>
+	<c:forEach items="${ station }" var="s">
+	const contentString${s.id} = "<a href='/instation/${s.id}'>${s.name}</a>";
+	const infowindow${s.id} = new google.maps.InfoWindow({
+	    content: contentString${s.id},
+	  });
+	const marker${s.id} =  new google.maps.Marker({
+		  	
+		    position: { lat: ${s.lat}, lng: ${s.lng} },
+		    map,
+		    title: "Hello World!",
+		    icon: {                             
+		    	  url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+		  });
+	  marker${s.id}.addListener("click", () => {
+		    infowindow${s.id}.open({
+		      anchor: marker${s.id},
+		      map,
+		      shouldFocus: false,
+		    });
+		  });
+	</c:forEach>
+	}</script>
 <body>
 	<main>
 	<div>
@@ -119,12 +168,15 @@
             </div>
             </div>
             
+
 		</section>
 	</main>
 	<div class="circle1"></div>
 	<div class="circle2"></div>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly"
-		async></script>
+		async>
+		
+		</script>
 </body>
 </html>

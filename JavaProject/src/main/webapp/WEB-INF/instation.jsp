@@ -122,6 +122,7 @@
 												<form:hidden path="users" value="${user.id}" />
 												<form:hidden path="substations" value="${substation.id}" />
 												<button class="button "><h2>Rent</h2></button>
+
 											</form:form>
 										</div>
 									</c:when>
