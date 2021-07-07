@@ -1,6 +1,8 @@
 package com.example.JavaProject.Controllers;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -35,7 +37,7 @@ public class Users {
 
 		userValidator.validate(user, result);
 		if (result.hasErrors()) {
-			return "home.jsp";
+			return "loginPage.jsp";
 		}
 //		userService.saveUserWithAdminRole(user);
 		userService.saveWithUserRole(user);
@@ -144,57 +146,158 @@ public class Users {
 	}
 
 	@RequestMapping("/stations")
-	public String stations(Model model) {
+	public String stations(Model model, Principal principal) {
 		List<Station> stations = allservices.findStations();
 		model.addAttribute("stations", stations);
+		String username = principal.getName();
+		model.addAttribute("user", userService.findByUsername(username));
 		return "stationsPage.jsp";
 	}
 
 	@RequestMapping("/aboutus")
-	public String aboutus() {
+	public String aboutus(Model model, Principal principal) {
+		String username = principal.getName();
+		model.addAttribute("currentUser", userService.findByUsername(username));
 		return "aboutUs.jsp";
 	}
 
 	@RequestMapping("/instation/{id}")
 	public String instation(@PathVariable("id") Long id, Principal principal, Model model,
 			@ModelAttribute("bike") Bicycle bike, @ModelAttribute("bike1") Bicycle bike1) {
-//
-//		String username = principal.getName();
-//		model.addAttribute("user", userService.findByEmail(username));
-//		System.out.println(username);
+
+
+		String username = principal.getName();
+		System.out.println(username + "vbvbvbvbvbvbvbvbvbvbvbbvvbbvbvbvbvbvb");
+		model.addAttribute("user", userService.findByUsername(username));
+		System.out.println(username);
+
 		model.addAttribute("station", allservices.findStationById(id));
 
 		return "instation.jsp";
 	}
 
-	@RequestMapping("/rent/instation/{id}")
-	public String rentBike(@PathVariable("id") Long id, Principal principal, Model model,
-			@ModelAttribute("bike") Bicycle bike) {
 
-		if (principal != null) {
-			String username = principal.getName();
-			User user1 = userService.findByEmail(username);
-
-			bike.setUser(user1);
-
-			bike.setSubstation(null);
-			allservices.updateBicycle(bike);
-			return "redirect:/instation/" + id;
-		} else
-
-			return "redirect:/login";
+	@RequestMapping("rent/instation/{id}")
+	public String rentBike(@PathVariable("id") Long id, Principal principal, Model model,@ModelAttribute("bike") Bicycle bike) {
+		
+		String email = principal.getName();
+		User user1 = userService.findByUsername(email);
+        System.out.println(bike.getId() + "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+		System.out.println(user1.getBicycle() + "sssssssssssssssssssssssssssssssssssssssss");
+		
+		
+		bike.setUsers(user1);
+		user1.setAge(user1.getAge());
+		user1.setCreatedAt(user1.getCreatedAt());
+		user1.setCurrent(user1.getCurrent());
+		user1.setEmail(user1.getEmail());
+		user1.setFirstname(user1.getFirstname());
+		user1.setId(user1.getId());
+		user1.setLastname(user1.getLastname());
+		user1.setPassword(user1.getPassword());
+		user1.setRoles(user1.getRoles());
+		user1.setTotal(user1.getTotal());
+		user1.setUpdatedAt(user1.getUpdatedAt());
+		user1.setUsername(user1.getUsername());
+		user1.setBonus(user1.getBonus());
+		
+		user1.setTotalmin(user1.getTotalmin());
+		
+		user1.setBicycle(bike);
+		userService.updateUser(user1);
+		
+		System.out.println(user1.getBicycle().getId() + "sssssssssssssssssssssssssssssssssssssssss");
+		System.out.println(bike.getUsers() + "aaaaaaaaaaaaaa");
+		System.out.println(bike.getSubstations().getId());
+		
+		
+		bike.setSubstations(null);
+		
+		
+		System.out.println(bike.getSubstations());
+		
+		
+		allservices.updateBicycle(bike);
+		
+		return"redirect:/instation/"+ id;
 
 	}
+
+
+
 
 	@RequestMapping("return/instation/{id}")
 	public String returnBike(@PathVariable("id") Long id, Principal principal, Model model,
 			@ModelAttribute("bike1") Bicycle bike) {
 
-		String username = principal.getName();
-		User user1 = userService.findByEmail(username);
-		Substation sub = allservices.findSubstationById(bike.getSubstation().getId());
-		System.out.println(sub.getId());
 
+		String username = principal.getName();
+		User user1 = userService.findByUsername(username);
+		System.out.println(username);
+		
+		Bicycle bicycle = allservices.findBicycleid(bike1.getId());
+		Substation sub = allservices.findSubstationById(bike1.getSubstations().getId());
+		bike1.setUsers(null);
+		bike1.setSubstations(sub);
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("mm");
+		
+
+
+		
+		Date firstUpdatedAt = bicycle.getUpdatedAt();
+		System.out.println(firstUpdatedAt + "1111111111111111111111111111111111111111111111");
+		allservices.updateBicycle(bike1);
+		Date lastUpdatedAt = bicycle.getUpdatedAt();
+		System.out.println(lastUpdatedAt + "22222222222222222222222222222222222222222222222222");
+		
+		int newdate =  dateFormat.format(lastUpdatedAt).compareTo(dateFormat.format(firstUpdatedAt));
+		
+		
+		user1.setCurrent(newdate);
+		user1.setAge(user1.getAge());
+		user1.setCreatedAt(user1.getCreatedAt());
+		
+		user1.setEmail(user1.getEmail());
+		user1.setFirstname(user1.getFirstname());
+		user1.setId(user1.getId());
+		user1.setLastname(user1.getLastname());
+		user1.setPassword(user1.getPassword());
+		user1.setRoles(user1.getRoles());
+		user1.count();
+		user1.setTotal(user1.getTotal());
+		user1.setBonus(user1.getBonus());
+		user1.setUpdatedAt(user1.getUpdatedAt());
+		user1.setUsername(user1.getUsername());
+		
+		user1.setTotalmin(user1.getTotalmin()+ newdate);
+		
+		user1.setBicycle(null);
+		userService.updateUser(user1);
+		System.out.println(user1.getTotal());
+		System.out.println(newdate + "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
+
+			
+		return"redirect:/instation/"+ id;
+
+	}
+	
+	@GetMapping("/account/{id}")
+	public String mohazkel(Model model, @PathVariable Long id) {
+		User hezkel = userService.findByid(id);
+		model.addAttribute("hezkel", hezkel); 
+		model.addAttribute("osod", hezkel.getCurrent());
+		int bonus = hezkel.getBonus();
+		int totalmin = hezkel.getTotalmin();
+		
+			hezkel.setBonus(bonus =totalmin %2);
+			userService.updateUser(hezkel);
+		
+		
+	
+		return "counter.jsp"; }
+	 
+=======
 		bike.setUser(null);
 		bike.setSubstation(sub);
 
@@ -341,4 +444,4 @@ public class Users {
 		allservices.newsubstation(newSubStation);
 		return "redirect:/admin/substations/"+id;
 	}
-}
+

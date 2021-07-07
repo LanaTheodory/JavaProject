@@ -33,7 +33,6 @@
 
 			<!-- Brand Box -->
 			<div class="col-sm-6 brand">
-				<a href="#" class="logo">logo<span>.</span></a>
 
 				<div class="heading">
 					<h2>Baddaleh</h2>

@@ -42,33 +42,55 @@
 	<main>
 	<img src="/images/logo.png" alt="" />
 		<section class="glass">
-			<div class="dashboard">
+		
+		<div class="dashboard">
+			
 				<div class="link">
-					<h2>ِHome</h2>
+					<h2>ِ
+					<a href="/">Home</a>
+					</h2>
 				</div>
 
 				<div class="user">
 					
-					<h3>Simo Edwin</h3>
-					<p>Pro Member</p>
+					<h3>${currentUser.firstname} ${currentUser.lastname}</h3>
+					
 				</div>
 				<div class="links">
 					<div class="link">
-						<h2>ِAccount</h2>
+						<h2>
+							<a href="/account/${currentUser.id }">Account</a>
+						</h2>
+					</div>
+				<div class="link">
+						<h2>
+							<a href="/stations">Stations</a>
+						</h2>
+					</div>
+				
+					<div class="link">
+						<h2>
+							<a href="/">Prices</a>
+						</h2>
 					</div>
 					<div class="link">
-						<h2>Stations</h2>
+						<h2>
+							<a href="/aboutus">About us</a>
+						</h2>
 					</div>
-					<div class="link">
-						<h2>Prices</h2>
-					</div>
-					<div class="link">
-						<h2>About us.</h2>
+				</div>
+				
+				<div class="link">
+						<h3>
+							<form  id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input class="card button" type="submit" value="Logout!" />
+    </form>
+						</h3>
 					</div>
 				</div>
 
-			</div>
-
+				
 
 			<div class="cards1" >
 			
@@ -83,7 +105,15 @@
 				<p>we are looking forward to distribute our stations in all the Palestinian cities
 				to be able to cycle all across Palestine
 				 
-				</p>
+				<h3>Your health matters!</h3>
+				<p>With so many health benifits to riding it is important to make it part of your daily life
+				and here is why.</p>
+				<p>-Body weight<br>
+				Research has shown that regular riding can help regulate your weight and keep your body fit 
+				which protects you from nasty disease such as diabetes and helps burn calories fast</p>
+				<p>Heart Benifits<br>
+				riding is an enjoyable and effective aerobic activity. Daily riding may reduce the risk of 
+				life-threatening illnesses such as heart disease, high blood pressure and diabetes.</p>
 				<h3>Our team</h3>
 				<p>Ahmad Jury</p>
 				<p>Dyar Barham</p>

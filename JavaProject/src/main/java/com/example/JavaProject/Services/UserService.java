@@ -61,6 +61,13 @@ public class UserService {
 	        return userRepository.findByEmail(username);
 	    }
 
+		 public User updateUser(User user) {
+			 return userRepository.save(user);
+		 }
+		 
+
+
+
 
 		public void edituser(User b, User editUser) {
 			// TODO Auto-generated method stub
@@ -75,5 +82,5 @@ public class UserService {
 		}
 
 
-		
+
 }

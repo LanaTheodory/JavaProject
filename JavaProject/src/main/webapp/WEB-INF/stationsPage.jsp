@@ -46,38 +46,57 @@
 			<div class="dashboard">
 			
 				<div class="link">
-					<h2>ِHome</h2>
+					<h2>ِ
+					<a href="/">Home</a>
+					</h2>
 				</div>
 
 				<div class="user">
 					
-					<h3>Simo Edwin</h3>
-					<p>Pro Member</p>
+					<h3>${user.firstname} ${user.lastname}</h3>
+					
 				</div>
 				<div class="links">
 					<div class="link">
-						<h2>ِAccount</h2>
+						<h2>
+							<a href="/account/${user.id }">Account</a>
+						</h2>
+					</div>
+				<div class="link">
+						<h2>
+							<a href="/stations">Stations</a>
+						</h2>
+					</div>
+				
+					<div class="link">
+						<h2>
+							<a href="/">Prices</a>
+						</h2>
 					</div>
 					<div class="link">
-						<h2>Stations</h2>
-					</div>
-					<div class="link">
-						<h2>Prices</h2>
-					</div>
-					<div class="link">
-						<h2>About us.</h2>
+						<h2>
+							<a href="/aboutus">About us</a>
+						</h2>
 					</div>
 				</div>
-
-			</div>
-
+				
+				<div class="link">
+						<h3>
+							<form  id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input class="card button" type="submit" value="Logout!" />
+    </form>
+						</h3>
+					</div>
+				</div>
 
 			<div class="cards">
 				<c:forEach var="station" items="${stations}">
 					<div class="card1">
+					<a href="/instation/${station.id }">
 						<h3>${station.name}</h3>
 						<p>${station.location}</p>
-						
+						</a>
 					</div>
 				</c:forEach>
 			</div>

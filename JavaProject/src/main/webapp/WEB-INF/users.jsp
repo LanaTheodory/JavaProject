@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="./css/admin.css" />
 </head>
 <body>
-
+	
 	<div class="sidebar">
   <a class="active" href="#home">Home</a>
   <a href="#news">News</a>

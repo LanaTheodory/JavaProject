@@ -7,19 +7,32 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
 
-<link rel="stylesheet" type="text/css" href="css/loginReg.css">
-<script type="text/javascript" src="js/loginReg.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="/css/loginReg.css">
+ -->
+ <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+ <link rel="stylesheet" type="text/css" href="/css/counter.css">
+
+
 <title>Your Account</title>
 </head>
 <body>
-<h1>Welcome, ${currentUser.username}</h1>
-<main>
+	
+	<main>
+<img src="/images/logo.png" alt="" />
 		<section class="glass">
 			<div class="dashboard">
 				<div class="links">
@@ -32,15 +45,16 @@
 
 				<div class="user">
 					<img src="./images/avatar.png" alt="" />
-					<h3>Simo Edwin</h3>
-					<p>Pro Member</p>
+					<h3>${hezkel.firstname} ${hezkel.lastname}</h3>
+
 				</div>
 				<div class="links">
 					<div class="link">
 						<h2>
-							<a href="/account">Account</a>
+							<a href="/account/${hezkel.id }">Account</a>
 						</h2>
 					</div>
+			
 					<div class="link">
 						<h2>
 							<a href="/stations">Stations</a>
@@ -48,38 +62,77 @@
 					</div>
 					<div class="link">
 						<h2>
-							<a href="/prices">Prices</a>
+							<a href="/">Prices</a>
 						</h2>
 					</div>
 					<div class="link">
 						<h2>
-							<a href="/about">About us</a>
+							<a href="/aboutus">About us</a>
 						</h2>
 					</div>
 				</div>
 
+
+<form  id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input class="card button" type="submit" value="Logout!" />
+    </form>
+
+
 			</div>
+			
 			<div class="games">
-				<h1>BADALLAH</h1>
-				<h3>Find All Our Stations!</h3>
-					<div id="map" class="card"></div>
+				<div class="status">
+						<h1>Welcome ${hezkel.firstname}</h1>
 
+				</div>
+			<div class="cards">
+			
+			
+		
+			
+			<div class="card1"> 
+              <div class="card-info">
+                <h2>Total number of Rents</h2>
+              
+               
+              </div>
+              <h2 class="percentage">${hezkel.total }</h2>
+            </div>
+            
+            
+			<div class="card1"> 
+              <div class="card-info">
+                <h2>Total number of riding minutes</h2>
+              
+               
+              </div>
+              <h2 class="percentage">${hezkel.totalmin }</h2>
+            </div>
+            
+            
+          
+     <%--        <div class="card"> 
+              <div class="card-info">
+                <h2>Bonus minutes</h2>
+                
+               
+              </div>
+             <h2 class="percentage">${hezkel.bonus }</h2>
+            </div>
+			 --%>
+			
 			</div>
-		</section>
-		<table>
-		<form:label path="rent">Total Rents
-		<c:out value="${hezkel.asd }"></c:out>
-    		</form:label>
-    		
-    		<form:label path="rentTime">Total Rent Time
-    		<c:out value="${osod}"></c:out>
-    		</form:label>
-    		
-    		<form:label path="name">Bounse Time
-    		<%-- <c:out value=""></c:out> --%>
-    		</form:label>
-		</table>
-		</main>
+			
+				<div>
 
+				
+
+				</div>
+			</section>
+			
+	</main>
+   <div class="circle1"></div>
+    <div class="circle2"></div>
 </body>
 </html>

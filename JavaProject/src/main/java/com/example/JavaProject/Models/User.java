@@ -38,7 +38,9 @@ public class User {
 	private String passwordConfirmation;
 	private int age;
 	private int total;
+	private int totalmin;
 	private int current;
+	private int bonus;
 	@Column(updatable = false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -59,6 +61,14 @@ public class User {
 		return password;
 	}
 	
+
+	public int getTotalmin() {
+		return totalmin;
+	}
+
+	public void setTotalmin(int totalmin) {
+		this.totalmin = totalmin;
+	}
 
 	public String getUsername() {
 		return username;
@@ -120,6 +130,31 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+
+	public int getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(int bonus) {
+		this.bonus = bonus;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
 	public int getTotal() {
 		return total;
@@ -128,7 +163,9 @@ public class User {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-
+    public int count() {
+        return this.total++;
+    }
 	public int getCurrent() {
 		return current;
 	}
