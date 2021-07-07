@@ -37,9 +37,9 @@
 					value="${bicycle.type }"></form:input>
 			</div>
 			<div class="form-group">
-				<form:label path="substation">SubStations:</form:label>
-				<form:errors path="substation"></form:errors>
-				<form:select path="substation">
+				<form:label path="substations">SubStations:</form:label>
+				<form:errors path="substations"></form:errors>
+				<form:select path="substations">
 					<c:forEach items="${sub}" var="r">
 						<form:option value="${r}">${r.name}</form:option>
 					</c:forEach>

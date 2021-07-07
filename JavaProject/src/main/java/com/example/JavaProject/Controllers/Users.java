@@ -39,9 +39,9 @@ public class Users {
 		if (result.hasErrors()) {
 			return "loginPage.jsp";
 		}
-//		userService.saveUserWithAdminRole(user);
-		userService.saveWithUserRole(user);
-		return "redirect:/home";
+//	userService.saveUserWithAdminRole(user);
+	userService.saveWithUserRole(user);
+		return "redirect:/login";
 	}
 
 	public Users(UserService userservice, UserValidator uservalidator, Allservices allservices) {
@@ -135,10 +135,10 @@ public class Users {
 	@RequestMapping(value = { "/", "/home" })
 	public String home(Principal principal, Model model) {
 		// 1
-		/*
-		 * String username = principal.getName(); System.out.println(username);
-		 * model.addAttribute("currentUser", userService.findByUsername(username));
-		 */
+		
+		  String username = principal.getName(); System.out.println(username);
+		  model.addAttribute("currentUser", userService.findByUsername(username));
+		 
 		model.addAttribute("stations", allservices.allnotnull());
 		model.addAttribute("station", allservices.allnull());
 		model.addAttribute("locations", allservices.allstation());
@@ -228,7 +228,7 @@ public class Users {
 
 	@RequestMapping("return/instation/{id}")
 	public String returnBike(@PathVariable("id") Long id, Principal principal, Model model,
-			@ModelAttribute("bike1") Bicycle bike) {
+			@ModelAttribute("bike1") Bicycle bike1) {
 
 
 		String username = principal.getName();
@@ -274,6 +274,7 @@ public class Users {
 		
 		user1.setBicycle(null);
 		userService.updateUser(user1);
+		
 		System.out.println(user1.getTotal());
 		System.out.println(newdate + "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN");
 
@@ -297,15 +298,15 @@ public class Users {
 	
 		return "counter.jsp"; }
 	 
-=======
-		bike.setUser(null);
-		bike.setSubstation(sub);
 
-		allservices.updateBicycle(bike);
-
-		return "redirect:/instation/" + id;
-
-	}
+//		bike.setUser(null);
+//		bike.setSubstation(sub);
+//
+//		allservices.updateBicycle(bike);
+//
+//		return "redirect:/instation/" + id;
+//
+//	}
 
 	/*
 	 * @GetMapping("/asd/{id}") public String mohazkel(Model model, @PathVariable
@@ -444,4 +445,5 @@ public class Users {
 		allservices.newsubstation(newSubStation);
 		return "redirect:/admin/substations/"+id;
 	}
+}
 

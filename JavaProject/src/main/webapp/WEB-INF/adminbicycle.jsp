@@ -38,8 +38,8 @@
     <c:forEach items="${ users }" var="e">
 			<tr>
 				<td>${e.type}</td>
-				<td>${e.substation.name}</td>
-				<td>${e.user}</td>
+				<td>${e.substations.name}</td>
+				<td>${e.users}</td>
 
 				<td><a href="/admin/bicycles/edit/${e.id}"><button class="btn btn-warning">edit</button></a>  <a href="/admin/bicycle/delete/${e.id}"><button class="btn btn-danger">delete</button></a> </td>
 			</tr>

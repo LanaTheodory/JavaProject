@@ -6,17 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
-
-
-
-
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -26,7 +19,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-
 <link rel="stylesheet" type="text/css" href="css/loginReg.css">
 <script type="text/javascript" src="js/loginReg.js"></script>
 <title>Home Page</title>
@@ -34,8 +26,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
 	rel="stylesheet" />
-<link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./css/home.css" />
 <script type="text/javascript" src="./js/home.js"></script>
 </head>
 <script type="text/javascript">
@@ -45,8 +37,8 @@ function initMap() {
 	    zoom: 13,
 	    center: myLatLng,
 	  });
-	  
 	  <c:forEach items="${ stations }" var="s">
+	 
 	  const conttt${s.id} = "<a href='/instation/${s.id}'>${s.name}</a>";
 		const infowindo${s.id} = new google.maps.InfoWindow({
 		    content: conttt${s.id},
@@ -65,47 +57,51 @@ function initMap() {
 		    });
 		  });
 	</c:forEach>
+	 
 	<c:forEach items="${ station }" var="s">
-	const contentString${s.id} = "<a href='/instation/${s.id}'>${s.name}</a>";
-	const infowindow${s.id} = new google.maps.InfoWindow({
-	    content: contentString${s.id},
-	  });
-	const marker${s.id} =  new google.maps.Marker({
-		  	
-		    position: { lat: ${s.lat}, lng: ${s.lng} },
-		    map,
-		    title: "Hello World!",
-		    icon: {                             
-		    	  url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+		if(typeof conttt${s.id} === 'undefined'){
+		const contentString${s.id} = "<a href='/instation/${s.id}'>${s.name}</a>";
+		const infowindow${s.id} = new google.maps.InfoWindow({
+		    content: contentString${s.id},
 		  });
-	  marker${s.id}.addListener("click", () => {
+		const marker${s.id} =  new google.maps.Marker({
+			  	
+			    position: { lat: ${s.lat}, lng: ${s.lng} },
+			    map,
+			    title: "Hello World!",
+			    icon: {                             
+			    	  url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+			  });
+		marker${s.id}.addListener("click", () => {
 		    infowindow${s.id}.open({
 		      anchor: marker${s.id},
 		      map,
 		      shouldFocus: false,
 		    });
 		  });
+		}
 	</c:forEach>
-	}</script>
+	}
+	</script>
 <body>
 	<main>
-	<div>
-	<img src="/images/logo.png" alt="" /> 
-	</div>
+		<div>
+			<img src="/images/logo.png" alt="" />
+		</div>
 		<section class="glass">
-		
+
 			<div class="dashboard">
-			
+
 				<div class="link">
-					<h2>ِ
-					<a href="/">Home</a>
+					<h2>
+						ِ <a href="/">Home</a>
 					</h2>
 				</div>
 
 				<div class="user">
-					
-					<h3>${currentUser.firstname} ${currentUser.lastname}</h3>
-					
+
+					<h3>${currentUser.firstname}${currentUser.lastname}</h3>
+
 				</div>
 				<div class="links">
 					<div class="link">
@@ -113,12 +109,12 @@ function initMap() {
 							<a href="/account/${currentUser.id }">Account</a>
 						</h2>
 					</div>
-				<div class="link">
+					<div class="link">
 						<h2>
 							<a href="/stations">Stations</a>
 						</h2>
 					</div>
-				
+
 					<div class="link">
 						<h2>
 							<a href="/">Prices</a>
@@ -130,44 +126,48 @@ function initMap() {
 						</h2>
 					</div>
 				</div>
-				
+
 				<div class="link">
-						<h3>
-							<form  id="logoutForm" method="POST" action="/logout">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input class="card button" type="submit" value="Logout!" />
-    </form>
-						</h3>
-					</div>
+					<h3>
+						<form id="logoutForm" method="POST" action="/logout">
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" /> <input class="card button"
+								type="submit" value="Logout!" />
+						</form>
+					</h3>
 				</div>
+			</div>
 
 			</div>
 
-		
+
 			<div class="games">
 				<h1>Baddaleh</h1>
 				<h3>Find All Our Stations!</h3>
+				
+				
 				<div id="map" class="card"></div>
 
-			<div class ="prices1">
+				<div class="prices1">
 
 
-            <div class="pricetab card1">
-            <h3>Price Per Minute</h3>
-            <h4 class="percentage oneline">0.20 nis/min</h4>
-            </div>
+					<div class="pricetab card1">
+						<h3>Price Per Minute</h3>
+						<h4 class="percentage oneline">0.20 nis/min</h4>
+					</div>
 
-            <div class="pricetab card1">
-            <h3>Price Per Day</h3>
-            <h4 class="percentage oneline">70 nis/day</h4></div>
+					<div class="pricetab card1">
+						<h3>Price Per Day</h3>
+						<h4 class="percentage oneline">70 nis/day</h4>
+					</div>
 
-        <div class="pricetab card1">
-            <h3>Bonus Minutes</h3>
-            <h4 class="percentage">one bonus minute every 10 minutes</h4>
-            </div>
-            </div>
-            </div>
-            
+					<div class="pricetab card1">
+						<h3>Bonus Minutes</h3>
+						<h4 class="percentage">one bonus minute every 10 minutes</h4>
+					</div>
+				</div>
+			</div>
+
 
 		</section>
 	</main>
