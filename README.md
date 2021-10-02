@@ -5,7 +5,7 @@
 * [General Info](#our-mission)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Project Status](#project-status)
+* [pages](#Pages)
 * [Room for Improvement](#room-for-improvement)
 * [Acknowledgements](#members)
 * [Contact](#contact)
@@ -13,8 +13,8 @@
 
 
 ## Our mission and vision:
-**Baddaleh** is a platform that provide an easy way to rent bycicles.
-by having an account in baddaleh, you can use any bycicle to handle your day in a fast,healthy and economicly friendly way. 
+**Baddaleh** is a platform that provide an easy way to rent bikes in Ramallah.
+By having an account in baddaleh, you can RENT any bike in a fast,healthy and economicly friendly way. 
 
 
 ## Technologies Used
@@ -30,28 +30,32 @@ by having an account in baddaleh, you can use any bycicle to handle your day in 
 ## Features:
 
 1- login and registration
-in order for the clients  to use the platform they must register/ login first
+in order for the clients  to use the platform they must register/ login first,
 there are front end and backend validations for the login/registration form feilds.
 
-2- the user can rent  an bicycle from the stations destributed in ramallah city.
+2- the user can rent any bike from the specified stations destributed in Ramallah city.
 
-3- stations viewed in the map to assist users to reach them esealy.
+3- stations are displayed on the map so that users can reach them easily.
 
-4- after bicycle rented, user can return it back in any station he want. 
+4- after renting a bicycle, the user can return it back to the nearest station with available parking slots. 
 
-5- every user can track his own data, such as rent number and total renting time in the user page. 
+5- every user can check his/her activities on the application from the account page, which shows how many bikes and minutes the user have rented. 
 
+## Pages
 
+![Login](https://github.com/LanaTheodory/JavaProject/blob/main/images/login.PNG)
+![home](https://github.com/LanaTheodory/JavaProject/blob/main/images/home.PNG)
+![account](https://github.com/LanaTheodory/JavaProject/blob/main/images/Account.PNG)
+![stations](https://github.com/LanaTheodory/JavaProject/blob/main/images/stations.PNG)
+![rentSubstation](https://github.com/LanaTheodory/JavaProject/blob/main/images/rentSubStation.PNG)
+![returnSubstation](https://github.com/LanaTheodory/JavaProject/blob/main/images/returnSubStation.PNG)
 ![baddaleh](https://github.com/DiyarBarham/JavaProject/blob/main/baddaleh.PNG)
-## Project Status
-this is only the webapplication.
 
 ## Room-for-improvement
 To do:
-- bonus  feature must be added to the user page depending on the users usage .
+- discounts feature must be added to the user page depending on the users usage .
 - QR code will be addedto facilitate renting bicycle.
 - payment methods.
-
 
 ## Members
 - Ahmad Jury
@@ -61,6 +65,6 @@ To do:
 
 
 ## Contact
-emails: 
+email: 
 lanatheodory@gmail.com
 
